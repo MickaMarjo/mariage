@@ -1,82 +1,82 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notre Mariage</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notre Mariage</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-        html, body {
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            background: black;
-            font-family: Arial, sans-serif;
-        }
+html,body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    background:black;
+    font-family:Arial,sans-serif;
+}
 
-        .page {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            transition: opacity 0.8s;
-        }
+.page{
+    position:absolute;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    transition:opacity 0.8s ease;
+}
 
-        .hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
+.hidden{
+    opacity:0;
+    pointer-events:none;
+}
 
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            cursor: pointer;
-        }
+img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    cursor:pointer;
+}
 
-        .message {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0,0,0,0.5);
-            color: white;
-            padding: 12px 20px;
-            border-radius: 25px;
-        }
-    </style>
+.message{
+    position:absolute;
+    bottom:30px;
+    left:50%;
+    transform:translateX(-50%);
+    background:rgba(0,0,0,0.5);
+    color:white;
+    padding:12px 20px;
+    border-radius:25px;
+    font-size:18px;
+}
+</style>
 </head>
+
 <body>
 
-    <!-- Première photo -->
-    <div id="page1" class="page">
-        photo1.jpg">
-        <div class="message">❤️ Touchez la photo</div>
-    </div>
+<div id="page1" class="page">
+    <img src="photo1.jpg" alt="Photo 1" onclick="showPhoto2()">
+    <div class="message">❤️ Touchez la photo</div>
+</div>
 
-    <!-- Deuxième photo -->
-    <div id="page2" class="page hidden">
-        photo2.jpg">
-        <div class="message">💍 Découvrez notre mariage</div>
-    </div>
+<div id="page2" class="page hidden">
+    <img src="photo2.jpg" alt="Photo 2" onclick="goToWeddingSite()">
+    <div class="message">💍 Découvrez notre mariage</div>
+</div>
 
-    <script>
-        function showPhoto2() {
-            document.getElementById("page1").classList.add("hidden");
-            document.getElementById("page2").classList.remove("hidden");
-        }
+<script>
+function showPhoto2(){
+    document.getElementById("page1").classList.add("hidden");
+    document.getElementById("page2").classList.remove("hidden");
+}
 
-        function goToWeddingSite() {
-            window.location.href = "https://withjoy.com/votre-mariage";
-        }
-    </script>
+function goToWeddingSite(){
+    window.location.href = "https://withjoy.com/votre-mariage";
+}
+</script>
 
 </body>
 </html>
