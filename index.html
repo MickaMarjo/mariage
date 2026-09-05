@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Notre Mariage</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    font-family: "Segoe UI", sans-serif;
+}
+
+.page{
+    position:absolute;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:black;
+    transition:opacity 0.8s ease;
+}
+
+.page img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    cursor:pointer;
+}
+
+.hidden{
+    opacity:0;
+    pointer-events:none;
+}
+
+.message{
+    position:absolute;
+    bottom:30px;
+    left:50%;
+    transform:translateX(-50%);
+    color:white;
+    background:rgba(0,0,0,0.4);
+    padding:12px 20px;
+    border-radius:30px;
+    font-size:18px;
+    backdrop-filter: blur(5px);
+}
+
+</style>
+</head>
+<body>
+
+<!-- Photo 1 -->
+
+<div id="page1" class="page">
+    photo1.jpg">
+    <div class="message">Touchez la photo ❤️</div>
+</div>
+
+<!-- Photo 2 -->
+
+<div id="page2" class="page hidden">
+    photo2.jpg">
+    <div class="message">Encore une fois ❤️</div>
+</div>
+
+<script>
+
+function showPhoto2() {
+    document.getElementById('page1').classList.add('hidden');
+    document.getElementById('page2').classList.remove('hidden');
+}
+
+function goToWeddingSite() {
+    window.location.href = "https://withjoy.com/votre-mariage";
+}
+
+</script>
+
+</body>
+</html>
