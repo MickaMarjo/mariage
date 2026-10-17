@@ -1,82 +1,170 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Notre Mariage</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+    <title>Notre Mariage</title>
 
-html,body{
-    width:100%;
-    height:100%;
-    overflow:hidden;
-    background:black;
-    font-family:Arial,sans-serif;
-}
+    <style>
 
-.page{
-    position:absolute;
-    width:100%;
-    height:100%;
-    top:0;
-    left:0;
-    transition:opacity 0.8s ease;
-}
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
 
-.hidden{
-    opacity:0;
-    pointer-events:none;
-}
+        html, body{
+            width:100%;
+            height:100%;
+            overflow:hidden;
+            background:black;
+            font-family:Arial, sans-serif;
+        }
 
-img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    cursor:pointer;
-}
+        /* Chaque écran */
+        .page{
+            position:absolute;
+            width:100%;
+            height:100%;
+            top:0;
+            left:0;
+            transition:opacity 0.8s ease;
+            overflow:hidden;
+            background:black;
+        }
 
-.message{
-    position:absolute;
-    bottom:30px;
-    left:50%;
-    transform:translateX(-50%);
-    background:rgba(0,0,0,0.5);
-    color:white;
-    padding:12px 20px;
-    border-radius:25px;
-    font-size:18px;
-}
-</style>
+        /* Page masquée */
+        .hidden{
+            opacity:0;
+            pointer-events:none;
+        }
+
+        /* Fond flouté */
+        .background{
+            position:absolute;
+            inset:-30px;
+            background-size:cover;
+            background-position:center;
+            filter:blur(25px);
+            transform:scale(1.1);
+            opacity:0;
+        }
+
+        /* Photo principale */
+        .photo{
+            position:relative;
+            width:100%;
+            height:100%;
+            object-fit:cover;
+            object-position:center;
+            cursor:pointer;
+            z-index:1;
+        }
+
+        /* Message en bas de l'écran */
+        .message{
+            position:absolute;
+            bottom:30px;
+            left:50%;
+            transform:translateX(-50%);
+            background:rgba(0,0,0,0.5);
+            color:white;
+            padding:12px 20px;
+            border-radius:25px;
+            font-size:18px;
+            white-space:nowrap;
+            z-index:2;
+            pointer-events:none;
+        }
+
+        /*
+        ==============================
+        TABLETTE / ORDINATEUR
+        ==============================
+        */
+        @media (min-width:768px){
+
+            /* Affichage du fond flouté */
+            .background{
+                opacity:0.55;
+            }
+
+            /* La photo entière reste visible */
+            .photo{
+                object-fit:contain;
+            }
+
+        }
+
+    </style>
 </head>
+
 
 <body>
 
-<div id="page1" class="page">
-    <img src="photo1.jpg" alt="Photo 1" onclick="showPhoto2()">
-    <div class="message">❤️ Touchez la photo</div>
-</div>
+    <!-- ============================== -->
+    <!-- PAGE 1 -->
+    <!-- ============================== -->
 
-<div id="page2" class="page hidden">
-    <img src="photo2.jpg" alt="Photo 2" onclick="goToWeddingSite()">
-    <div class="message">💍 Découvrez notre mariage</div>
-</div>
+    <div id="page1" class="page">
 
-<script>
-function showPhoto2(){
-    document.getElementById("page1").classList.add("hidden");
-    document.getElementById("page2").classList.remove("hidden");
-}
+        <!-- Même photo agrandie et floutée en arrière-plan -->
+        <div
+            class="background"
+            style="background-image:url('photo1.jpg');">
+        </div>
 
-function goToWeddingSite(){
-    window.location.href = "https://withjoy.com/votre-mariage";
-}
-</script>
+        <!-- Photo principale -->
+        <img
+            class="photo"
+            src="photo1.jpg"
+            alt="Photo 1"
+            onclick="showPhoto2()"
+        >
+
+        <div class="message">
+            ❤️ Touchez la photo
+        </div>
+
+    </div>
+
+
+    <!-- ============================== -->
+    <!-- PAGE 2 -->
+    <!-- ============================== -->
+
+    <div id="page2" class="page hidden">
+
+        <!-- Même photo agrandie et floutée en arrière-plan -->
+        <div
+            class="background"
+            style="background-image:url('photo2.jpg');">
+        </div>
+
+        <!-- Photo principale -->
+        <img
+            class="photo"
+            src="photo2.jpg"
+            alt="Photo 2"
+            onclick="goToWeddingSite()"
+        >
+
+        <div class="message">
+            💍 Découvrez notre mariage
+        </div>
+
+    </div>
+;
+        }
+
+        /* Redirection vers le site du mariage */
+        function goToWeddingSite(){
+            window.location.href = "https://withjoy.com/votre-mariage";
+        }
+
+    </script>
 
 </body>
 </html>
